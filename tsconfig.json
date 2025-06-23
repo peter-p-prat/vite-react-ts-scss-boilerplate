@@ -1,0 +1,45 @@
+{
+  "compilerOptions": {
+    "baseUrl": "src",
+    "target": "ES2020",
+    "useDefineForClassFields": true,
+    "lib": ["ES2020", "DOM", "DOM.Iterable", "es2021", "es2017"],
+    "module": "ESNext",
+    "skipLibCheck": true,
+    /* Bundler mode */
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react-jsx",
+    /* Linting */
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+    "experimentalDecorators": true,
+    "noUncheckedIndexedAccess": true,
+    "strictNullChecks": true,
+    "plugins": [
+      {
+        "name": "typescript-plugin-css-modules",
+        "options": {
+          "classnameTransform": "camelCaseOnly",
+          "goToDefinition": true
+        }
+      }
+    ],
+    "types": ["vitest/globals", "@testing-library/jest-dom", "vite/client"],
+    "paths": {
+      "test/*": ["../test/*"],
+      "test/mocks": ["../test/__mocks__/imports"]
+    }
+  },
+  "include": ["src", "test"],
+  "references": [
+    {
+      "path": "./tsconfig.node.json"
+    }
+  ]
+}

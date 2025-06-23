@@ -1,0 +1,72 @@
+@use "styles/base";
+@use "styles/animations" as *;
+@use "styles/variables" as *;
+
+.app {
+  text-align: center;
+}
+
+.app-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+.stack {
+  display: flex;
+  gap: 20px;
+}
+
+.stack-logo {
+  background: {
+    size: contain;
+    position: center;
+    repeat: no-repeat;
+  }
+  width: 100px;
+  height: 100px;
+
+  &.react {
+    background-image: url("#{$img-path}/react-logo.svg");
+  }
+
+  &.vite {
+    background-image: url("#{$img-path}/vite-logo.svg");
+  }
+
+  &.vitest {
+    background-image: url("#{$img-path}/vitest-logo.svg");
+  }
+
+  &.ts {
+    background-image: url("#{$img-path}/ts-logo.svg");
+  }
+
+  &.scss {
+    background-image: url("#{$img-path}/sass-logo.svg");
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .app-logo {
+    animation: spin infinite 20s linear;
+  }
+}
+
+.app-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.app-link {
+  color: #61dafb;
+}
+
+button {
+  font-size: calc(10px + 2vmin);
+}
