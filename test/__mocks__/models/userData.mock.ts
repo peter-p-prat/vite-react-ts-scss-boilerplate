@@ -1,17 +1,10 @@
-export interface UserData {
-    email: string;
-    name: string;
-    dateOfBirth: string;
-    password: string;
-    confirmPassword: string;
-    verificationCode: string;
-}
+import {User} from "store/slices/user/type";
 
-export const userDataMock: UserData = {
-    email: "testSuccess@test.com",
-    password: "12345678!Aa",
-    name: "Test Test",
-    dateOfBirth: "1990-01-01",
-    confirmPassword: "12345678!Aa",
-    verificationCode: "123456",
+export const userDataMock: User = {
+    id: 1,
+    email: "john@mail.com",
+    password: "changeme",
+    name: "Jhon",
+    role: "customer",
+    avatar: "https://i.imgur.com/LDOO4Qs.jpg",
 };

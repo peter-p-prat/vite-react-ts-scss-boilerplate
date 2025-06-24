@@ -1,6 +1,8 @@
 import {HttpHandler} from "msw";
 
-import {UserData, userDataMock} from "test/__mocks__/models/userData.mock";
+import {userDataMock} from "test/__mocks__/models/userData.mock";
+
+import {User} from "store/slices/user/type";
 
 import {getMockedHandler, HandlerOptions, MockedHandlerMethod} from "./shared";
 
@@ -9,7 +11,7 @@ import {getMockedHandler, HandlerOptions, MockedHandlerMethod} from "./shared";
  * @param options The handler options
  * @returns The mocked handler
  */
-export function getUserHandler(options?: Partial<HandlerOptions<UserData>>): HttpHandler {
+export function getUserHandler(options?: Partial<HandlerOptions<User>>): HttpHandler {
     return getMockedHandler({
         ...options,
         method: MockedHandlerMethod.GET,
