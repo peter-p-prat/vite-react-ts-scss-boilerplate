@@ -1,0 +1,15 @@
+.language-selector {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  & > label {
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  & > select {
+    padding: 8px;
+    border-radius: 4px;
+  }
+}

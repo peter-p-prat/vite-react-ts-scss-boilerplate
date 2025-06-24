@@ -3,17 +3,31 @@
 @use "styles/variables" as *;
 
 .app {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  color: white;
+  padding-bottom: 40px;
   text-align: center;
 }
 
-.app-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
 .stack {
-  display: flex;
-  gap: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 16px;
+
+  @media (min-width: 760px) {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  @media (min-width: 1100px) {
+    display: flex;
+    gap: 20px;
+  }
 }
 
 .stack-logo {
@@ -26,6 +40,7 @@
   height: 100px;
 
   &.react {
+    animation: spin infinite 20s linear;
     background-image: url("#{$img-path}/react-logo.svg");
   }
 
@@ -44,23 +59,16 @@
   &.scss {
     background-image: url("#{$img-path}/sass-logo.svg");
   }
+
+  &.msw {
+    background-image: url("#{$img-path}/msw-logo.svg");
+  }
 }
 
 @media (prefers-reduced-motion: no-preference) {
   .app-logo {
     animation: spin infinite 20s linear;
   }
-}
-
-.app-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
 .app-link {
