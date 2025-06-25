@@ -1,7 +1,7 @@
 import {Action, Middleware, UnknownAction} from "redux";
 import {isUnauthorizedError} from "shared/utils/network";
 
-import {logoutThunk} from "store/slices/user/mutations";
+import {logoutThunk} from "store/slices/user/thunks";
 import {RootState} from "store/store";
 import {isRejectedAction} from "store/type";
 

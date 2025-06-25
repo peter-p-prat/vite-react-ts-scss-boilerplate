@@ -1,7 +1,7 @@
-import {createSlice, PayloadAction} from "@reduxjs/toolkit";
+import {ActionReducerMapBuilder, createSlice, PayloadAction} from "@reduxjs/toolkit";
 
-import {extraReducers} from "./mutations";
-import {initialState, User} from "./type";
+import {getUserThunk} from "./thunks";
+import {initialState, User, UserSlice} from "./type";
 
 export const userSlice = createSlice({
     name: "user",
@@ -14,7 +14,20 @@ export const userSlice = createSlice({
             state.user = undefined;
         },
     },
-    extraReducers,
+    extraReducers: (builder: ActionReducerMapBuilder<UserSlice>) =>
+        builder
+            .addCase(getUserThunk.pending, (state) => {
+                state.isLoadingUser = true;
+            })
+            .addCase(getUserThunk.rejected, (state) => {
+                state.user = null;
+            })
+            .addCase(getUserThunk.fulfilled, (state, action) => {
+                state.user = action.payload;
+            })
+            .addMatcher(getUserThunk.settled, (state) => {
+                state.isLoadingUser = false;
+            }),
 });
 
 export const {setUser, resetUserData} = userSlice.actions;
