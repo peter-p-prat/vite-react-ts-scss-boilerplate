@@ -1,0 +1,70 @@
+@use "styles/colors" as colors;
+
+.select-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+label {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+select {
+  appearance: none;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  padding: 0 1em 0 0;
+  margin: 0;
+  width: 100%;
+  font-family: inherit;
+  font-size: inherit;
+  cursor: inherit;
+  line-height: inherit;
+  z-index: 1;
+  // Remove dropdown arrow in IE10 & IE11
+  &::-ms-expand {
+    display: none;
+  }
+}
+
+.select {
+  position: relative;
+  display: grid;
+  grid-template-areas: "select";
+  align-items: center;
+  background-color: colors.palette(primary, 700);
+  min-width: 15ch;
+  border-radius: 8px;
+  padding: 6px 12px;
+  cursor: pointer;
+
+  select,
+  &::after {
+    grid-area: select;
+  }
+
+  // Custom arrow
+  &::after {
+    content: "";
+    justify-self: end;
+    width: 12px;
+    height: 6px;
+    background-color: colors.palette(tertiary, 500);
+    clip-path: polygon(100% 0%, 0 0%, 50% 100%);
+  }
+
+  &:has(select:open)::after {
+    transform: rotate(180deg);
+  }
+
+  &:has(select:disabled) {
+    cursor: not-allowed;
+  }
+}
+
+.select + label {
+  margin-top: 2rem;
+}

@@ -5,12 +5,12 @@ import {Locale} from "./types";
 export const locales = Object.seal<Locale[]>([
     {
         id: "en-us",
-        label: "English - United States",
+        label: "English",
         translation: enUS,
     },
     {
         id: "es-es",
-        label: "Español - España",
+        label: "Español",
         translation: esES,
     },
 ]);

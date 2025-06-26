@@ -1,6 +1,8 @@
+@use "styles/colors" as colors;
+
 body {
   margin: 0;
-  background-color: #333;
+  background-color: colors.palette(bg, 1);
   font-family:
     -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
@@ -10,4 +12,27 @@ body {
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+
+button {
+  padding: 10px 20px;
+  border-radius: 40px;
+  text-decoration: none;
+  background-color: colors.palette(secondary, 500);
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.1s ease;
+  font-size: 20px;
+
+  &:hover {
+    background-color: colors.palette(secondary, 700);
+  }
+
+  &:active {
+    background-color: colors.palette(secondary, 400);
+  }
+}
+
+* {
+  color: colors.palette(tertiary, 500);
 }

@@ -56,3 +56,11 @@ export function translateWithBoldPart(localizationString: string): ReactElement 
     const fullContent = [parts[0], boldElement, parts[2]];
     return createElement("span", {key: getRandomHash()}, fullContent);
 }
+
+/**
+ * Generates a random integer number between 0 and 10 (inclusive)
+ * @returns A random integer from 0 to 10
+ */
+export function getRandomNumberZeroToTen(): number {
+    return Math.floor(Math.random() * 11);
+}

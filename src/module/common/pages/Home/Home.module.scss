@@ -1,0 +1,78 @@
+@use "styles/animations" as *;
+@use "styles/variables" as *;
+@use "styles/breakpoints" as breakpoints;
+@use "styles/layout" as layout;
+
+.home {
+  @include layout.container();
+  & {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    padding: 40px 0;
+    text-align: center;
+  }
+}
+
+.navigate-button {
+  margin: 20 0 0px;
+}
+
+.stack {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 16px;
+
+  @include breakpoints.media-breakpoint-only(tablet) {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+
+  @include breakpoints.media-breakpoint-only(desktop) {
+    display: flex;
+    gap: 20px;
+  }
+}
+
+.stack-logo {
+  background: {
+    size: contain;
+    position: center;
+    repeat: no-repeat;
+  }
+  width: 100px;
+  height: 100px;
+
+  &.react {
+    animation: spin infinite 20s linear;
+    background-image: url("#{$img-path}/react-logo.svg");
+  }
+
+  &.vite {
+    background-image: url("#{$img-path}/vite-logo.svg");
+  }
+
+  &.vitest {
+    background-image: url("#{$img-path}/vitest-logo.svg");
+  }
+
+  &.ts {
+    background-image: url("#{$img-path}/ts-logo.svg");
+  }
+
+  &.scss {
+    background-image: url("#{$img-path}/sass-logo.svg");
+  }
+
+  &.rtk {
+    background-image: url("#{$img-path}/rtk-logo.svg");
+  }
+
+  &.router {
+    background-image: url("#{$img-path}/react-router-dom-logo.svg");
+  }
+
+  &.msw {
+    background-image: url("#{$img-path}/msw-logo.svg");
+  }
+}

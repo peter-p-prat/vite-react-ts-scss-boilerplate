@@ -4,8 +4,5 @@ export const homePage = Object.seal({
         title: "Este es un proyecto boilerplate {{stack}}.",
         subtitle: "Incluye HMR, ESLint, Prettier, SCSS Modules, y más.",
     },
-    links: {
-        react: "Aprende React",
-        vite: "Documentación de Vite",
-    },
+    cta: "Probar Navegacion y Async Actions de RTK",
 });

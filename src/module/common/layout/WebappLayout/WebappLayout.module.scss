@@ -1,0 +1,29 @@
+@use "styles/breakpoints" as breakpoints;
+@use "styles/heights" as heights;
+
+.webappLayout {
+  overflow: auto;
+  min-height: 100lvh;
+  width: 100%;
+  position: relative;
+  align-items: center;
+
+  &__main {
+    overflow: hidden;
+    margin: heights.get-layout-heights(header, mobile) 0 0;
+    padding-bottom: heights.get-layout-heights(footer, mobile);
+    min-height: calc(100lvh - heights.get-layout-heights(header, mobile) - heights.get-layout-heights(footer, mobile));
+
+    @include breakpoints.media-breakpoint-only(tablet) {
+      margin-top: heights.get-layout-heights(header, tablet);
+      padding-bottom: heights.get-layout-heights(footer, tablet);
+      min-height: calc(100lvh - heights.get-layout-heights(header, tablet) - heights.get-layout-heights(footer, tablet));
+    }
+
+    @include breakpoints.media-breakpoint-only(desktop) {
+      margin-top: heights.get-layout-heights(header, desktop);
+      padding-bottom: heights.get-layout-heights(footer, desktop);
+      min-height: calc(100lvh - heights.get-layout-heights(header, desktop) - heights.get-layout-heights(footer, desktop));
+    }
+  }
+}

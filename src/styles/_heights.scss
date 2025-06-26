@@ -1,0 +1,26 @@
+@use "./utils" as utils;
+
+$_header: (
+  mobile: 56px,
+  tablet: 72px,
+  desktop: 72px,
+);
+
+$_footer: (
+  mobile: 300px,
+  tablet: 200px,
+  desktop: 100px,
+);
+
+$_webapp: (
+  header: $_header,
+  footer: $_footer,
+);
+
+/// function to get webapp layout components -header & footer - heights for each device
+/// @param {String} $component - The component whose height is being requested
+/// @param {String} $device - The device for which the component height is being requested (desktop, tablet or mobile)
+/// @return {String} The height value in px
+@function get-layout-heights($component, $device) {
+  @return utils.get-from-map(utils.get-from-map($_webapp, $component), $device);
+}

@@ -9,4 +9,5 @@ export interface Locale {
 
 export type Translation = typeof defaultLocale;
 export type CommonTranslation = typeof defaultLocale.common;
+export type UserTranslation = typeof defaultLocale.user;
 export type HomeTranslation = typeof defaultLocale.homePage;

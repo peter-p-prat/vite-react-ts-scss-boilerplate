@@ -1,18 +1,20 @@
 import {createAsyncThunk, miniSerializeError} from "@reduxjs/toolkit";
+import {getRandomNumberZeroToTen} from "shared/utils/common";
 import {fetchWithErrorHandling, isExtendedError} from "shared/utils/network";
 
 import {resetUserData} from "./slice";
-import {User, UserSlice} from "./type";
+import {User, UserResponse, UserSlice} from "./type";
 
 export const getUserThunk = createAsyncThunk<User, undefined, {state: {userReducer: UserSlice}}>(
     "user/getUserThunk",
     async (_, thunkAPI) => {
         try {
-            const user = await fetchWithErrorHandling<User>("https://api.escuelajs.co/api/v1/users/1", {
+            const randomUserId = getRandomNumberZeroToTen();
+            const userResponse = await fetchWithErrorHandling<UserResponse>(`https://reqres.in/api/users/${randomUserId.toString()}`, {
                 method: "GET",
             });
-            await fetchWithErrorHandling("https://api.escuelajs.co/api/v1/users", {method: "GET"});
-            return user;
+            // await fetchWithErrorHandling("https://api.escuelajs.co/api/v1/users", {method: "GET"});
+            return userResponse.data;
         } catch (error) {
             if (isExtendedError(error)) {
                 return thunkAPI.rejectWithValue(miniSerializeError(error));

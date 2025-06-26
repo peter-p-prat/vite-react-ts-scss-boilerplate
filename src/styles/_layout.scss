@@ -1,0 +1,17 @@
+@use "styles/breakpoints" as breakpoints;
+
+@mixin container() {
+  margin: 0 16px;
+  box-sizing: border-box;
+
+  @include breakpoints.media-breakpoint-only(tablet) {
+    margin: 0 32px;
+  }
+
+  @include breakpoints.media-breakpoint-only(desktop) {
+    width: 1140px;
+    margin: 0 auto;
+  }
+
+  @content;
+}

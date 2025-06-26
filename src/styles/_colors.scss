@@ -1,0 +1,138 @@
+@use "sass:map";
+
+// Map of colors to be referenced from palette function
+$colors: (
+  primary: (
+    25: #f8f9fa,
+    50: #f1f3f4,
+    100: #d8dfe2,
+    200: #c1ccd1,
+    300: #a3b3b9,
+    400: #8ba0a7,
+    500: #748d92,
+    600: #687f84,
+    700: #526469,
+    800: #3e4a4e,
+    900: #2a3133,
+  ),
+  secondary: (
+    25: #f0f4f6,
+    50: #e1e9ed,
+    100: #b3c7d1,
+    200: #8aa3b0,
+    300: #5c7a8a,
+    400: #2e5164,
+    500: #124e66,
+    600: #0f4559,
+    700: #0c3747,
+    800: #092a36,
+    900: #061d25,
+  ),
+  tertiary: (
+    25: #fefdfa,
+    50: #fefbf5,
+    100: #fdf7e8,
+    200: #fcf3db,
+    300: #fbeec8,
+    400: #fae9b5,
+    500: #fdf0d5,
+    600: #f4e8c9,
+    700: #e8d9b8,
+    800: #dccaa7,
+    900: #d0bb96,
+  ),
+  gray: (
+    25: #f5f5f5,
+    50: #ebeaeb,
+    100: #c0bec2,
+    200: #a19ea5,
+    300: #76727c,
+    400: #5c5662,
+    500: #332c3b,
+    600: #2e2836,
+    700: #241f2a,
+    800: #1c1820,
+    900: #151219,
+  ),
+  bg: (
+    1: #282c34,
+    2: #17181c,
+    3: #212a31,
+  ),
+  error: (
+    25: #fff7f5,
+    50: #fdeeeb,
+    100: #f9c9c0,
+    200: #f6afa2,
+    300: #f28a77,
+    400: #f0735d,
+    500: #ec5034,
+    600: #d7492f,
+    700: #a83925,
+    800: #822c1d,
+    900: #632216,
+  ),
+  success: (
+    25: #f3fff9,
+    50: #e7faf1,
+    100: #b5f0d2,
+    200: #91e9bd,
+    300: #5edf9f,
+    400: #3fd98c,
+    500: #0fcf6f,
+    600: #0ebc65,
+    700: #0b934f,
+    800: #08723d,
+    900: #06572f,
+  ),
+  progress: (
+    25: #f1f9ff,
+    50: #e9f4fd,
+    100: #bcdcf9,
+    200: #9bcbf6,
+    300: #6eb4f2,
+    400: #51a5ef,
+    500: #268feb,
+    600: #2382d6,
+    700: #1b66a7,
+    800: #154f81,
+    900: #103c63,
+  ),
+  warning: (
+    25: #fff9f2,
+    50: #fff3e6,
+    100: #f7e1cb,
+    200: #ffc98a,
+    300: #ffb154,
+    400: #ffa133,
+    500: #ff8a00,
+    600: #e87e00,
+    700: #b56200,
+    800: #8c4c00,
+    900: #6b3a00,
+  ),
+  neutral: (
+    white: #ffffff,
+    black: #000000,
+  ),
+);
+
+// Helper function to color elements
+/// @param {String} $color - The color group
+/// @param {Number | String} $value - The color variation
+/// @return {String} The color hexagesimal value
+@function palette($color, $value) {
+  @if map.has-key($colors, $color) {
+    $color-map: map.get($colors, $color);
+    @if map.has-key($color-map, $value) {
+      $tone: map.get($color-map, $value);
+      @return $tone;
+    }
+
+    @warn "unknown tone `#{$value}` in color `#{$color}`";
+    @return null;
+  }
+
+  @warn "unknown color `#{$color}` in palette";
+  @return null;
+}
